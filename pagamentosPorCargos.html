@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pendurados</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <img id="icone-branca" src="image/Icone-Branca.png">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">Início</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#contact">Contato</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-12">
+
+          <div id="container-grafico" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto; margin-top: 100px;"></div>
+
+          <h2 style="text-align: center">Dados</h2>
+
+          <table id="datatable" class="display table" cellspacing="0" width="100%">
+
+          <script src="js/graficos/jquery-1.12.4.js"></script>
+          <script src="js/graficos/jquery.dataTables.min.js"></script>
+          <script src="https://code.highcharts.com/highcharts.js"></script>
+          <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+          <script src="https://code.highcharts.com/modules/treemap.js"></script>
+          <script src="js/graficos/jerico.js"></script>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- FOOTER -->
+    <!--
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+    -->
+  </div><!-- /.container -->
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <!-- Script Tabela Jerico -->
+    <script>
+
+
+    data_json = {'AGENTE ADMINISTRATIVO': [[181320,
+                              '301004',
+                              'Instituto de Previdência de Alagoa Nova',
+                              'AGENTE ADMINISTRATIVO',
+                              'Benefício previdênciário temporário',
+                              '69234183487',
+                              '012016',
+                              'ADRIANA BALBINO SALES',
+                              7.88,
+                              'INSTITUTO DE PREVIDENCIA DE ALAGOA NOVA - IPAN'],
+                             [401860,
+                              '201095',
+                              'Prefeitura Municipal de João Pessoa',
+                              'AGENTE ADMINISTRATIVO',
+                              'Efetivo',
+                              '60201770415',
+                              '112012',
+                              'ALBERTINA MELO DE NORONHA',
+                              865.59,
+                              'Geral'],
+                             [986337,
+                              '301031',
+                              'Instituto de Prev. e Assistência do Município de Bom Jesus',
+                              'AGENTE ADMINISTRATIVO',
+                              'Inativos / Pensionistas',
+                              '35057653415',
+                              '092014',
+                              'ANA MARIA DA SILVA GONÇALVES',
+                              62693.19,
+                              'Instituto de Previdencia e Assist.Mun de Bom Jesus']],
+   'AGENTE COMUNITARIO DE SAUDE': [[17107,
+                                    '201201',
+                                    'Prefeitura Municipal de Serra Branca',
+                                    'AGENTE COMUNITARIO DE SAUDE',
+                                    'Contratação por excepcional interesse público',
+                                    '05051024475',
+                                    '042011',
+                                    'ACARIA OLIVEIRA DA COSTA',
+                                    0.01,
+                                    'Secretaria de Saude'],
+                                   [157113,
+                                    '601055',
+                                    'FUNDO MUNICIPAL DE SAUDE DE CASSERENGUE',
+                                    'AGENTE COMUNITARIO DE SAUDE',
+                                    'Efetivo',
+                                    '05290397450',
+                                    '062015',
+                                    'ADIVANIA FERREIRA DANTAS',
+                                    1014.0,
+                                    'FUNDO MUNICIPAL DE SAUDE DE CASSERENGUE'],
+                                   [157131,
+                                    '601055',
+                                    'FUNDO MUNICIPAL DE SAUDE DE CASSERENGUE',
+                                    'AGENTE COMUNITARIO DE SAUDE',
+                                    'Efetivo',
+                                    '05290397450',
+                                    '122016',
+                                    'ADIVANIA FERREIRA DANTAS',
+                                    8380.46,
+                                    'FUNDO MUNICIPAL DE SAUDE DE CASSERENGUE']],
+   'AUXILIAR DE SERVICOS': [[360510,
+                             '301004',
+                             'Instituto de Previdência de Alagoa Nova',
+                             'AUXILIAR DE SERVIÇOS',
+                             'Efetivo',
+                             '04903949494',
+                             '012016',
+                             'ALAN PIERRI DO NASCIMENTO SILVA',
+                             3.94,
+                             'INSTITUTO DE PREVIDENCIA DE ALAGOA NOVA - IPAN'],
+                            [208400,
+                             '601171',
+                             'Fundo Municipal de Assistência Social de Santa Rita',
+                             'AUXILIAR DE SERVIÇOS',
+                             'Contratação por excepcional interesse público',
+                             '02255377454',
+                             '052015',
+                             'ADRIANA DOS SANTOS SILVA',
+                             788.0,
+                             'FUNDO DE ASSISTENCIA SOCIAL'],
+                            [126925,
+                             '201040',
+                             'Prefeitura Municipal de Cabedelo',
+                             'AUXILIAR DE SERVICOS',
+                             'Efetivo',
+                             '38030322453',
+                             '122016',
+                             'ADENIZE PEREIRA DUARTE',
+                             5420.5,
+                             'Chefia de Gabinete']],
+   'AUXILIAR DE SERVIÇOS GERAIS': [[432186,
+                                    '201073',
+                                    'Prefeitura Municipal de Desterro',
+                                    'AUXILIAR DE SERVICOS GERAIS',
+                                    'Efetivo',
+                                    '01114098450',
+                                    '062009',
+                                    'ALCILEIDE NASCIMENTO SILVA',
+                                    0.1,
+                                    'SECRETARIA DE OBRAS E VIAÇÃO'],
+                                   [673694,
+                                    '201140',
+                                    'Prefeitura Municipal de Pedro Régis',
+                                    'AUXILIAR DE SERVIÇOS GERAIS',
+                                    'Efetivo',
+                                    '37358472420',
+                                    '102012',
+                                    'ALIZETE GERMANO DA SILVA',
+                                    746.4,
+                                    'SECRETARIA DA EDUCAÇÃO E CULTURA'],
+                                   [746000,
+                                    '201042',
+                                    'Prefeitura Municipal de Cacimba de Areia',
+                                    'AUXILIAR DE SERVICOS GERAIS',
+                                    'Efetivo',
+                                    '05997665496',
+                                    '122013',
+                                    'ALZIRA LUCAS GOMES',
+                                    50847.5,
+                                    'SECRETARIA DE INFRA-ESTRUTURA']],
+   'GARI': [[171094,
+             '301004',
+             'Instituto de Previdência de Alagoa Nova',
+             'GARI',
+             'Efetivo',
+             '03911922485',
+             '012016',
+             'ADONIAS DE FRANCA',
+             3.94,
+             'INSTITUTO DE PREVIDENCIA DE ALAGOA NOVA - IPAN'],
+            [352446,
+             '601067',
+             'Instituto de Previdência dos Servidores de Cuité',
+             'GARI',
+             'Inativos / Pensionistas',
+             '51727390415',
+             '052015',
+             'ALAÍDE MIRANDA DA ROCHA',
+             788.0,
+             'IMPESEC'],
+            [546537,
+             '201042',
+             'Prefeitura Municipal de Cacimba de Areia',
+             'GARI',
+             'Efetivo',
+             '04489571402',
+             '122013',
+             'ALEX SOUZA DA SILVA',
+             20678.0,
+             'SECRETARIA DE INFRA-ESTRUTURA']],
+   'MOTORISTA': [[463783,
+                  '201040',
+                  'Prefeitura Municipal de Cabedelo',
+                  'MOTORISTA',
+                  'Contratação por excepcional interesse público',
+                  '91016380410',
+                  '092014',
+                  'ALDEMIR ALEXANDRE DA CRUZ',
+                  24.13,
+                  'Secretaria de Infra Estrutura'],
+                 [108453,
+                  '601073',
+                  'Fundo Municipal de Saúde de Desterro',
+                  'MOTORISTA',
+                  'Efetivo',
+                  '13058363591',
+                  '082014',
+                  'ADEMAR PEREIRA DA SILVA',
+                  924.0,
+                  'FUNDO MUNICIPAL DE SAÚDE DE DESTERRO'],
+                 [78079,
+                  '201166',
+                  'Prefeitura Municipal de Santa Cecília',
+                  'MOTORISTA',
+                  'Efetivo',
+                  '03069374417',
+                  '092009',
+                  'ADEILTON JOSE LIMA DA SILVA',
+                  17813.75,
+                  'SECRETARIA DE SAÚDE']],
+   'PENSIONISTA': [[926902,
+                    '201046',
+                    'Prefeitura Municipal de Cajazeiras',
+                    'PENSIONISTA',
+                    'Inativos / Pensionistas',
+                    '07153682490',
+                    '112011',
+                    'ANA LUCIA DA SILVA',
+                    11.81,
+                    'SEC. DE FAZENDA PUBLICA'],
+                   [457674,
+                    '301008',
+                    'Instituto de Seguridade Social do Municipio de Alhandra',
+                    'PENSIONISTA',
+                    'Inativos / Pensionistas',
+                    '43743790459',
+                    '012015',
+                    'ALDACY DA SILVA PONTES',
+                    788.0,
+                    'INSTITUTO DE SEGUR. SOCIAL DO MUNIC. DE ALHANDRA'],
+                   [257655,
+                    '301040',
+                    'Instituto de Prev. dos Serv. Mun. de Cabedelo',
+                    'Pensionista',
+                    'Inativos / Pensionistas',
+                    '00916238474',
+                    '122016',
+                    'ADRIANO BELMIRO DE SOUZA',
+                    37384.01,
+                    'ipsemc']],
+   'PROFESSOR': [[471156,
+                  '201201',
+                  'Prefeitura Municipal de Serra Branca',
+                  'PROFESSOR',
+                  'Contratação por excepcional interesse público',
+                  '02952578494',
+                  '022011',
+                  'ALDENICE JOSINA DE SOUZA',
+                  0.01,
+                  'Secretaria de Educação,Esporte e Cultura'],
+                 [602888,
+                  '201039',
+                  'Prefeitura Municipal de Cabaceiras',
+                  'PROFESSOR',
+                  'Contratação por excepcional interesse público',
+                  '02070543471',
+                  '092011',
+                  'ALEXSANDRA SOUSA DUARTE',
+                  968.28,
+                  ''],
+                 [871587,
+                  '201095',
+                  'Prefeitura Municipal de João Pessoa',
+                  'PROFESSOR',
+                  'Efetivo',
+                  '45054142487',
+                  '122015',
+                  'ANA DE FATIMA FERREIRA BRITO',
+                  9576.19,
+                  'Geral']],
+   'Serviço prestado': [[241499,
+                         '201095',
+                         'Prefeitura Municipal de João Pessoa',
+                         'Serviço prestado',
+                         'Contratação por excepcional interesse público',
+                         '03968112482',
+                         '052010',
+                         'ADRIANA ROCHA DO NASCIMENTO',
+                         37.4,
+                         ''],
+                        [585498,
+                         '201095',
+                         'Prefeitura Municipal de João Pessoa',
+                         'Serviço prestado',
+                         'Contratação por excepcional interesse público',
+                         '85456616491',
+                         '022014',
+                         'ALEXANDRINA PEREIRA DE OLIVEIRA',
+                         724.0,
+                         'DESPESA COM PESSOAL DO MAGIST+RIO-FUNDEB'],
+                        [630792,
+                         '201095',
+                         'Prefeitura Municipal de João Pessoa',
+                         'Serviço prestado',
+                         'Contratação por excepcional interesse público',
+                         '07372944694',
+                         '042014',
+                         'ALINE ALVES DO CARMO',
+                         21000.0,
+                         'MANUTENÃ+O DOS SERVIÃOS ADMINISTRATIVOS']],
+   'VIGILANTE': [[14890,
+                  '301004',
+                  'Instituto de Previdência de Alagoa Nova',
+                  'VIGILANTE',
+                  'Inativos / Pensionistas',
+                  '04481605448',
+                  '032016',
+                  'ABRAHAM LINCOLN DE MORAIS',
+                  13.2,
+                  'INSTITUTO DE PREVIDENCIA DE ALAGOA NOVA - IPAN'],
+                 [319380,
+                  '201175',
+                  'Prefeitura Municipal de Joca Claudino',
+                  'VIGILANTE',
+                  'Efetivo',
+                  '69241171472',
+                  '072014',
+                  'AGOSTINHOPEDRODEANDRADE',
+                  832.6,
+                  'SECRETARIA DE EDUCACAO E CULTURA'],
+                 [311246,
+                  '201025',
+                  'Prefeitura Municipal de Bayeux',
+                  'VIGILANTE',
+                  'Efetivo',
+                  '16052005491',
+                  '122012',
+                  'AGLAIR INACIO DE OLIVEIRA',
+                  7725.12,
+                  'secretaria municipal de seguranca e protecao']],
+   'Vigia': [[735161,
+              '610095',
+              'Fundo Municipal de Saúde de João Pessoa',
+              'VIGIA',
+              'Contratação por excepcional interesse público',
+              '03109486490',
+              '102015',
+              'ALYSSON MARTINS DE SOUSA',
+              52.53,
+              'FMS - FUNDO MUNICIPAL DE SAÚDE'],
+             [356714,
+              '201090',
+              'Prefeitura Municipal de Itaporanga',
+              'VIGIA',
+              'Efetivo',
+              '04192019477',
+              '052014',
+              'ALAN DEIVID MARTINS GOMES',
+              905.0,
+              'SECRETARIA MUNICIPAL DE INFRAEST. E URBANISMO'],
+             [724416,
+              '201050',
+              'Prefeitura Municipal de Campina Grande',
+              'VIGIA',
+              'Efetivo',
+              '23742593404',
+              '092014',
+              'ALVARO BATISTA DA SILVA',
+              5333.46,
+              'SECRETARIA_DE_ADMINISTRACAO_SAD']]
+    };
+
+
+
+        Highcharts.chart('container-grafico', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Valores Máximos e Medianas de Pagamentos em Prefeituras'
+        },
+
+        xAxis: {
+            categories: [
+              'AGENTE ADMINISTRATIVO',
+              'AUXILIAR DE SERVICOS',
+              'AUXILIAR DE SERVIÇOS GERAIS',
+              'GARI',
+              'MOTORISTA',
+              'PENSIONISTA',
+              'PROFESSOR',
+              'Serviço prestado',
+              'Serviço prestado',
+              'VIGILANTE',
+              'Vigia'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Valor (R$)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:12px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0;font-size:12px">{series.name}: </td>' +
+                '<td style="padding:0;font-size:12px">R$ {point.y:.1f}</td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+
+        series: [
+          {
+            name: 'Mínimo',
+            data: [data_json['AGENTE ADMINISTRATIVO'][0][8],
+                  data_json['AUXILIAR DE SERVICOS'][0][8],
+                  data_json['AUXILIAR DE SERVIÇOS GERAIS'][0][8],
+                  data_json['GARI'][0][8],
+                  data_json['MOTORISTA'][0][8],
+                  data_json['PENSIONISTA'][0][8],
+                  data_json['PROFESSOR'][0][8],
+                  data_json['Serviço prestado'][0][8],
+                  data_json['Serviço prestado'][0][8],
+                  data_json['VIGILANTE'][0][8],
+                  data_json['Vigia'][0][8]
+                ]
+          },
+          {
+            name: 'Mediana',
+            data: [data_json['AGENTE ADMINISTRATIVO'][1][8],
+                  data_json['AUXILIAR DE SERVICOS'][1][8],
+                  data_json['AUXILIAR DE SERVIÇOS GERAIS'][1][8],
+                  data_json['GARI'][1][8],
+                  data_json['MOTORISTA'][1][8],
+                  data_json['PENSIONISTA'][1][8],
+                  data_json['PROFESSOR'][1][8],
+                  data_json['Serviço prestado'][1][8],
+                  data_json['Serviço prestado'][1][8],
+                  data_json['VIGILANTE'][1][8],
+                  data_json['Vigia'][1][8]
+                ]
+
+          },
+          {
+            name: 'Máximo',
+            data: [data_json['AGENTE ADMINISTRATIVO'][2][8],
+                  data_json['AUXILIAR DE SERVICOS'][2][8],
+                  data_json['AUXILIAR DE SERVIÇOS GERAIS'][2][8],
+                  data_json['GARI'][2][8],
+                  data_json['MOTORISTA'][2][8],
+                  data_json['PENSIONISTA'][2][8],
+                  data_json['PROFESSOR'][2][8],
+                  data_json['Serviço prestado'][2][8],
+                  data_json['Serviço prestado'][2][8],
+                  data_json['VIGILANTE'][2][8],
+                  data_json['Vigia'][2][8]
+                ]
+          }
+        ]
+        });
+    </script>
+
+    <script>
+
+      dataTable = [[
+                                '301004',
+                                'Instituto de Previdência de Alagoa Nova',
+                                'AGENTE ADMINISTRATIVO',
+                                'Benefício previdênciário temporário',
+                                '69234183487',
+                                '012016',
+                                'ADRIANA BALBINO SALES',
+                                7.88,
+                                'INSTITUTO DE PREVIDENCIA DE ALAGOA NOVA - IPAN'],
+                               [
+                                '201095',
+                                'Prefeitura Municipal de João Pessoa',
+                                'AGENTE ADMINISTRATIVO',
+                                'Efetivo',
+                                '60201770415',
+                                '112012',
+                                'ALBERTINA MELO DE NORONHA',
+                                865.59,
+                                'Geral'],
+                               [
+                                '301031',
+                                'Instituto de Prev. e Assistência do Município de Bom Jesus',
+                                'AGENTE ADMINISTRATIVO',
+                                'Inativos / Pensionistas',
+                                '35057653415',
+                                '092014',
+                                'ANA MARIA DA SILVA GONÇALVES',
+                                62693.19,
+                                'Instituto de Previdencia e Assist.Mun de Bom Jesus'],
+  [
+                                      '201201',
+                                      'Prefeitura Municipal de Serra Branca',
+                                      'AGENTE COMUNITARIO DE SAUDE',
+                                      'Contratação por excepcional interesse público',
+                                      '05051024475',
+                                      '042011',
+                                      'ACARIA OLIVEIRA DA COSTA',
+                                      0.01,
+                                      'Secretaria de Saude'],
+                                     [
+                                      '601055',
+                                      'FUNDO MUNICIPAL DE SAUDE DE CASSERENGUE',
+                                      'AGENTE COMUNITARIO DE SAUDE',
+                                      'Efetivo',
+                                      '05290397450',
+                                      '062015',
+                                      'ADIVANIA FERREIRA DANTAS',
+                                      1014.0,
+                                      'FUNDO MUNICIPAL DE SAUDE DE CASSERENGUE'],
+                                     [
+                                      '601055',
+                                      'FUNDO MUNICIPAL DE SAUDE DE CASSERENGUE',
+                                      'AGENTE COMUNITARIO DE SAUDE',
+                                      'Efetivo',
+                                      '05290397450',
+                                      '122016',
+                                      'ADIVANIA FERREIRA DANTAS',
+                                      8380.46,
+                                      'FUNDO MUNICIPAL DE SAUDE DE CASSERENGUE'],
+    [
+                               '301004',
+                               'Instituto de Previdência de Alagoa Nova',
+                               'AUXILIAR DE SERVIÇOS',
+                               'Efetivo',
+                               '04903949494',
+                               '012016',
+                               'ALAN PIERRI DO NASCIMENTO SILVA',
+                               3.94,
+                               'INSTITUTO DE PREVIDENCIA DE ALAGOA NOVA - IPAN'],
+                              [
+                               '601171',
+                               'Fundo Municipal de Assistência Social de Santa Rita',
+                               'AUXILIAR DE SERVIÇOS',
+                               'Contratação por excepcional interesse público',
+                               '02255377454',
+                               '052015',
+                               'ADRIANA DOS SANTOS SILVA',
+                               788.0,
+                               'FUNDO DE ASSISTENCIA SOCIAL'],
+                              [
+                               '201040',
+                               'Prefeitura Municipal de Cabedelo',
+                               'AUXILIAR DE SERVICOS',
+                               'Efetivo',
+                               '38030322453',
+                               '122016',
+                               'ADENIZE PEREIRA DUARTE',
+                               5420.5,
+                               'Chefia de Gabinete'],
+  [
+                                      '201073',
+                                      'Prefeitura Municipal de Desterro',
+                                      'AUXILIAR DE SERVICOS GERAIS',
+                                      'Efetivo',
+                                      '01114098450',
+                                      '062009',
+                                      'ALCILEIDE NASCIMENTO SILVA',
+                                      0.1,
+                                      'SECRETARIA DE OBRAS E VIAÇÃO'],
+                                     [
+                                      '201140',
+                                      'Prefeitura Municipal de Pedro Régis',
+                                      'AUXILIAR DE SERVIÇOS GERAIS',
+                                      'Efetivo',
+                                      '37358472420',
+                                      '102012',
+                                      'ALIZETE GERMANO DA SILVA',
+                                      746.4,
+                                      'SECRETARIA DA EDUCAÇÃO E CULTURA'],
+                                     [
+                                      '201042',
+                                      'Prefeitura Municipal de Cacimba de Areia',
+                                      'AUXILIAR DE SERVICOS GERAIS',
+                                      'Efetivo',
+                                      '05997665496',
+                                      '122013',
+                                      'ALZIRA LUCAS GOMES',
+                                      50847.5,
+                                      'SECRETARIA DE INFRA-ESTRUTURA'],
+[
+               '301004',
+               'Instituto de Previdência de Alagoa Nova',
+               'GARI',
+               'Efetivo',
+               '03911922485',
+               '012016',
+               'ADONIAS DE FRANCA',
+               3.94,
+               'INSTITUTO DE PREVIDENCIA DE ALAGOA NOVA - IPAN'],
+              [
+               '601067',
+               'Instituto de Previdência dos Servidores de Cuité',
+               'GARI',
+               'Inativos / Pensionistas',
+               '51727390415',
+               '052015',
+               'ALAÍDE MIRANDA DA ROCHA',
+               788.0,
+               'IMPESEC'],
+              [
+               '201042',
+               'Prefeitura Municipal de Cacimba de Areia',
+               'GARI',
+               'Efetivo',
+               '04489571402',
+               '122013',
+               'ALEX SOUZA DA SILVA',
+               20678.0,
+               'SECRETARIA DE INFRA-ESTRUTURA'],
+[
+                    '201040',
+                    'Prefeitura Municipal de Cabedelo',
+                    'MOTORISTA',
+                    'Contratação por excepcional interesse público',
+                    '91016380410',
+                    '092014',
+                    'ALDEMIR ALEXANDRE DA CRUZ',
+                    24.13,
+                    'Secretaria de Infra Estrutura'],
+                   [
+                    '601073',
+                    'Fundo Municipal de Saúde de Desterro',
+                    'MOTORISTA',
+                    'Efetivo',
+                    '13058363591',
+                    '082014',
+                    'ADEMAR PEREIRA DA SILVA',
+                    924.0,
+                    'FUNDO MUNICIPAL DE SAÚDE DE DESTERRO'],
+                   [
+                    '201166',
+                    'Prefeitura Municipal de Santa Cecília',
+                    'MOTORISTA',
+                    'Efetivo',
+                    '03069374417',
+                    '092009',
+                    'ADEILTON JOSE LIMA DA SILVA',
+                    17813.75,
+                    'SECRETARIA DE SAÚDE'],
+[
+                      '201046',
+                      'Prefeitura Municipal de Cajazeiras',
+                      'PENSIONISTA',
+                      'Inativos / Pensionistas',
+                      '07153682490',
+                      '112011',
+                      'ANA LUCIA DA SILVA',
+                      11.81,
+                      'SEC. DE FAZENDA PUBLICA'],
+                     [
+                      '301008',
+                      'Instituto de Seguridade Social do Municipio de Alhandra',
+                      'PENSIONISTA',
+                      'Inativos / Pensionistas',
+                      '43743790459',
+                      '012015',
+                      'ALDACY DA SILVA PONTES',
+                      788.0,
+                      'INSTITUTO DE SEGUR. SOCIAL DO MUNIC. DE ALHANDRA'],
+                     [
+                      '301040',
+                      'Instituto de Prev. dos Serv. Mun. de Cabedelo',
+                      'Pensionista',
+                      'Inativos / Pensionistas',
+                      '00916238474',
+                      '122016',
+                      'ADRIANO BELMIRO DE SOUZA',
+                      37384.01,
+                      'ipsemc'],
+[
+                    '201201',
+                    'Prefeitura Municipal de Serra Branca',
+                    'PROFESSOR',
+                    'Contratação por excepcional interesse público',
+                    '02952578494',
+                    '022011',
+                    'ALDENICE JOSINA DE SOUZA',
+                    0.01,
+                    'Secretaria de Educação,Esporte e Cultura'],
+                   [
+                    '201039',
+                    'Prefeitura Municipal de Cabaceiras',
+                    'PROFESSOR',
+                    'Contratação por excepcional interesse público',
+                    '02070543471',
+                    '092011',
+                    'ALEXSANDRA SOUSA DUARTE',
+                    968.28,
+                    ''],
+                   [
+                    '201095',
+                    'Prefeitura Municipal de João Pessoa',
+                    'PROFESSOR',
+                    'Efetivo',
+                    '45054142487',
+                    '122015',
+                    'ANA DE FATIMA FERREIRA BRITO',
+                    9576.19,
+                    'Geral'],
+[
+                           '201095',
+                           'Prefeitura Municipal de João Pessoa',
+                           'Serviço prestado',
+                           'Contratação por excepcional interesse público',
+                           '03968112482',
+                           '052010',
+                           'ADRIANA ROCHA DO NASCIMENTO',
+                           37.4,
+                           ''],
+                          [
+                           '201095',
+                           'Prefeitura Municipal de João Pessoa',
+                           'Serviço prestado',
+                           'Contratação por excepcional interesse público',
+                           '85456616491',
+                           '022014',
+                           'ALEXANDRINA PEREIRA DE OLIVEIRA',
+                           724.0,
+                           'DESPESA COM PESSOAL DO MAGIST+RIO-FUNDEB'],
+                          [
+                           '201095',
+                           'Prefeitura Municipal de João Pessoa',
+                           'Serviço prestado',
+                           'Contratação por excepcional interesse público',
+                           '07372944694',
+                           '042014',
+                           'ALINE ALVES DO CARMO',
+                           21000.0,
+                           'MANUTENÃ+O DOS SERVIÃOS ADMINISTRATIVOS'],
+[
+                    '301004',
+                    'Instituto de Previdência de Alagoa Nova',
+                    'VIGILANTE',
+                    'Inativos / Pensionistas',
+                    '04481605448',
+                    '032016',
+                    'ABRAHAM LINCOLN DE MORAIS',
+                    13.2,
+                    'INSTITUTO DE PREVIDENCIA DE ALAGOA NOVA - IPAN'],
+                   [
+                    '201175',
+                    'Prefeitura Municipal de Joca Claudino',
+                    'VIGILANTE',
+                    'Efetivo',
+                    '69241171472',
+                    '072014',
+                    'AGOSTINHOPEDRODEANDRADE',
+                    832.6,
+                    'SECRETARIA DE EDUCACAO E CULTURA'],
+                   [
+                    '201025',
+                    'Prefeitura Municipal de Bayeux',
+                    'VIGILANTE',
+                    'Efetivo',
+                    '16052005491',
+                    '122012',
+                    'AGLAIR INACIO DE OLIVEIRA',
+                    7725.12,
+                    'secretaria municipal de seguranca e protecao'],
+[
+                '610095',
+                'Fundo Municipal de Saúde de João Pessoa',
+                'VIGIA',
+                'Contratação por excepcional interesse público',
+                '03109486490',
+                '102015',
+                'ALYSSON MARTINS DE SOUSA',
+                52.53,
+                'FMS - FUNDO MUNICIPAL DE SAÚDE'],
+               [
+                '201090',
+                'Prefeitura Municipal de Itaporanga',
+                'VIGIA',
+                'Efetivo',
+                '04192019477',
+                '052014',
+                'ALAN DEIVID MARTINS GOMES',
+                905.0,
+                'SECRETARIA MUNICIPAL DE INFRAEST. E URBANISMO'],
+               [
+                '201050',
+                'Prefeitura Municipal de Campina Grande',
+                'VIGIA',
+                'Efetivo',
+                '23742593404',
+                '092014',
+                'ALVARO BATISTA DA SILVA',
+                5333.46,
+                'SECRETARIA_DE_ADMINISTRACAO_SAD']
+            ];
+
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                "paging": false,
+                language: {
+                  search: "Procurar: "
+                },
+                data: dataTable,
+                columns: [
+                    { title: "Código Unid. Gestora" },
+                    { title: "Unidade Gestora" },
+                    { title: "Cargo" },
+                    { title: "Tipo do Cargo" },
+                    { title: "CPF" },
+                    { title: "Mês Ano Referência" },
+                    { title: "Nome" },
+                    { title: "Valor da vantagem" },
+                    { title: "Unidade Orcamentária" }
+                ]
+            });
+        });
+    </script>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="js/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+
+
+</body>
+
+  <script type="text/javascript">
+
+  /*data['AGENTE ADMINISTRATIVO']
+  data['AGENTE COMUNITARIO DE SAUDE']
+  data['AUXILIAR DE SERVICOS']
+  data['AUXILIAR DE SERVIÇOS GERAIS']
+  data['GARI']
+  data['MOTORISTA']
+  data['PENSIONISTA']
+  data['PROFESSOR']
+  data['Serviço prestado']
+  data['Serviço prestado']
+  data['VIGILANTE']
+  data['Vigia']*/
+
+
+
+  </script>
+</html>
